@@ -1,0 +1,275 @@
+openapi: 3.0.3
+
+info:
+  title: Guia Restaurante API
+  version: 1.0.0
+  description: API REST desenvolvida para fins educacionais com Spring Boot
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+
+  /usuario:
+    get:
+      summary: Listar usuários
+      responses:
+        '200':
+          description: Sucesso
+
+    post:
+      summary: Cadastrar usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '201':
+          description: Criado
+
+  /usuario/{id}:
+    get:
+      summary: Buscar usuário por id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sucesso
+
+    put:
+      summary: Atualizar usuário
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Atualizado
+
+    delete:
+      summary: Excluir usuário
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Removido
+
+  /restaurante:
+    get:
+      summary: Listar restaurantes
+      responses:
+        '200':
+          description: Sucesso
+
+    post:
+      summary: Cadastrar restaurante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurante'
+      responses:
+        '201':
+          description: Criado
+
+  /restaurante/{id}:
+    get:
+      summary: Buscar restaurante por id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sucesso
+
+    put:
+      summary: Atualizar restaurante
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Atualizado
+
+    delete:
+      summary: Excluir restaurante
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Removido
+
+  /tiporestaurante:
+    get:
+      summary: Listar tipos de restaurante
+      responses:
+        '200':
+          description: Sucesso
+
+    post:
+      summary: Cadastrar tipo de restaurante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TipoRestaurante'
+      responses:
+        '201':
+          description: Criado
+
+  /tipoprato:
+    get:
+      summary: Listar tipos de prato
+      responses:
+        '200':
+          description: Sucesso
+
+    post:
+      summary: Cadastrar tipo de prato
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TipoPrato'
+      responses:
+        '201':
+          description: Criado
+
+  /pratodestaque:
+    get:
+      summary: Listar pratos em destaque
+      responses:
+        '200':
+          description: Sucesso
+
+    post:
+      summary: Cadastrar prato em destaque
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PratoDestaque'
+      responses:
+        '201':
+          description: Criado
+
+  /avaliacao:
+    get:
+      summary: Listar avaliações
+      responses:
+        '200':
+          description: Sucesso
+
+    post:
+      summary: Cadastrar avaliação
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avaliacao'
+      responses:
+        '201':
+          description: Criado
+
+components:
+
+  schemas:
+
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        email:
+          type: string
+        senha:
+          type: string
+        tipo:
+          type: string
+
+    TipoPrato:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+
+    TipoRestaurante:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        descricao:
+          type: string
+
+    PratoDestaque:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        descricao:
+          type: string
+        avaliacao:
+          type: string
+        foto:
+          type: string
+
+    Restaurante:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        cnpj:
+          type: string
+        cidade:
+          type: string
+        estado:
+          type: string
+        telefone:
+          type: string
+
+    Avaliacao:
+      type: object
+      properties:
+        id:
+          type: integer
+        comentario:
+          type: string
+        nota:
+          type: integer
